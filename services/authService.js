@@ -3,6 +3,7 @@ import http from "./httpService";
 import JwtDecode from "jwt-decode";
 
 import storage from "utils/storage";
+import url from "config/url";
 
 const tokenKey = "token";
 const adminTokenKey = "adminTokenKey";
@@ -18,7 +19,7 @@ export const getAdminJwt = () => {
 http.setJwt(getJwt());
 
 export const login = async (userObj) => {
-  const response = await http.post(`http://localhost:2300/api/v1/auth/login`, {
+  const response = await http.post(`${url}/auth/login`, {
     email: userObj.email,
     password: userObj.password,
   });
