@@ -14,14 +14,6 @@ const Header = () => {
   const { user } = useAuth();
   const node = useRef();
 
-  const setNavbar = () => {
-    if (window.scrollY > 100) {
-      setNavFixed(true);
-    } else {
-      setNavFixed(false);
-    }
-  };
-
   const open = () => {
     setShowDropdown((prev) => !prev);
   };
@@ -77,9 +69,7 @@ const Header = () => {
                         href={`/posts/create-post`}
                         className={`logout-link`}
                       >
-                        <a>
-                          <i className="fa-solid fa-upload"></i> Upload New Post
-                        </a>
+                        <i className="fa-solid fa-upload"></i> Upload New Post
                       </Link>
                     </div>
                   )}
@@ -93,9 +83,7 @@ const Header = () => {
                       logout();
                     }}
                   >
-                    <a>
-                      <i className="fa-solid fa-right-from-bracket"></i> Logout
-                    </a>
+                    <i className="fa-solid fa-right-from-bracket"></i> Logout
                   </Link>
                 </div>
               )}

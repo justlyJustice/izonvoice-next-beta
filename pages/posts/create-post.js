@@ -1,6 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import DashboardWrapper from "components/admin/Wrapper";
-/* eslint-disable no-unused-vars */
 import * as Yup from "yup";
 
 import { uploadBlogPost } from "services/postService";

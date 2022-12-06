@@ -14,7 +14,7 @@ import {
 } from "utils/helpers";
 import { getPost, getPosts } from "services/postService";
 
-import { adImageOne, treasuresColdRoom } from "public/assets/images";
+import Image from "next/image";
 
 const Post = ({ post }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -66,9 +66,11 @@ const Post = ({ post }) => {
         `}
       </style>
 
+      <Header />
+
       <>
         <Head
-          title={`Izon Voice | ${post.title}`}
+          title={`${post.title}`}
           description={post.description}
           image={post.images[0] || post.urlToImage}
         />
@@ -76,7 +78,13 @@ const Post = ({ post }) => {
         <div className="container">
           <div className="blog-section">
             <div className="blog-image-contain">
-              <img src={post.urlToImage || post.images[0]} alt="Post img" />
+              <Image
+                src={post.urlToImage || post.images[0]}
+                alt="Post img"
+                /* fill */
+                width={`100`}
+                height={`100`}
+              />
             </div>
 
             <div className="blog-text-contain">
@@ -114,7 +122,7 @@ const Post = ({ post }) => {
               </div>
             </div>
 
-            {/*   <div className="blog-content">
+            <div className="blog-content">
               <>
                 {(description &&
                   description[0].map((des, i) => (
@@ -129,16 +137,6 @@ const Post = ({ post }) => {
                       </p>
                     )))}
 
-                <div className="ad-contain">
-                  <a href="#">
-                    <img
-                      className="ad-image"
-                      src={adImageOne}
-                      alt={adImageOne}
-                    />
-                  </a>
-                </div>
-
                 {(description &&
                   description[1].map((des, i) => (
                     <p className="para" key={i}>
@@ -151,16 +149,6 @@ const Post = ({ post }) => {
                         <Linkify>{des}</Linkify>
                       </p>
                     )))}
-
-                <div className="ad-contain">
-                  <a href="#">
-                    <img
-                      className="ad-image"
-                      src={treasuresColdRoom}
-                      alt={treasuresColdRoom}
-                    />
-                  </a>
-                </div>
 
                 {(description &&
                   description[2].map((des, i) => (
@@ -175,16 +163,6 @@ const Post = ({ post }) => {
                       </p>
                     )))}
 
-                <div className="ad-contain">
-                  <a href="#">
-                    <img
-                      className="ad-image"
-                      src={adImageOne}
-                      alt={adImageOne}
-                    />
-                  </a>
-                </div>
-
                 {(description &&
                   description[3].map((des, i) => (
                     <p className="para" key={i}>
@@ -198,10 +176,10 @@ const Post = ({ post }) => {
                       </p>
                     )))}
               </>
-            </div> */}
+            </div>
           </div>
 
-          {/*           <CommentSection post={post} /> */}
+          <CommentSection post={post} />
         </div>
         {/* 
           <PostShare
@@ -220,18 +198,18 @@ export const getStaticPaths = async () => {
 
   const paths = slugs.map((slug) => ({
     params: {
-      slug,
+      postSlug: slug,
     },
   }));
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
 export const getStaticProps = async (context) => {
-  const res = await getPost(context.params.slug);
+  const res = await getPost(context.params.postSlug);
 
   return {
     props: {

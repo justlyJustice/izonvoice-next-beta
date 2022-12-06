@@ -324,10 +324,12 @@
 .blog-slider .blog-image-contain {
   /* width: 100%; */
   height: 365px;
+  position: relative;
 }
 
 .blog-slider .blog-image {
   width: 100%;
+  height: 100% !important;
 }
 
 .blog-slider .text-div {
@@ -875,7 +877,7 @@
       rgba(66, 232, 39, 0.7),
       rgba(234, 25, 25, 0.7)
     ),
-    url("/public/assets/images/background.jpeg");
+    url("/assets/images/background.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -886,7 +888,7 @@
   padding: 40px;
 }
 
-.left-contain img {
+.left-contain .logo {
   width: 220px;
 }
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -80,10 +81,12 @@ const CategoryCard = ({ data }) => {
   return (
     <CardContainer href={`/${data.slug}`}>
       <>
-        <img
+        <Image
           className="card-image"
           src={data.images[0] || data.urlToImage}
           alt="category-img"
+          width={100}
+          height={150}
         />
 
         <div>

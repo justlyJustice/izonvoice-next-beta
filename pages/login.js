@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Image from "next/image";
 import * as Yup from "yup";
 
 import AppLink from "components/common/AppLink";
@@ -48,10 +49,12 @@ const Login = () => {
 
       <div className="container grid">
         <div className="left-div">
-          <img
+          <Image
             src={`/assets/images/Logo.png`}
             alt="Izon voice logo"
             className="logo"
+            width={`300`}
+            height={`300`}
           />
 
           <div className="left-para-contain">

@@ -8,7 +8,11 @@ import Head from "components/common/Head";
 const PostCategory = ({ posts, name }) => {
   return (
     <section className="blog-category-section">
-      <Head title={"Izon Voice | " + name.toUpperCase()} />
+      <Head
+        title={"Izon Voice | " + name.toUpperCase()}
+        description="View our amazing categories and explor our different cross sections of news!"
+        image={"/assets/images/Log.png"}
+      />
 
       <Header />
 
@@ -34,7 +38,7 @@ const PostCategory = ({ posts, name }) => {
 };
 
 export const getStaticPaths = () => {
-  const categories = [
+  const categoryNames = [
     "agriculture",
     "politics",
     "sports",
@@ -44,9 +48,9 @@ export const getStaticPaths = () => {
     "social",
   ];
 
-  const paths = categories.map((category) => ({
+  const paths = categoryNames.map((categoryName) => ({
     params: {
-      categoryName: category,
+      categoryName,
     },
   }));
 

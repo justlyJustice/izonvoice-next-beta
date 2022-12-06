@@ -1,24 +1,18 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/*  */
-/* eslint-disable no-unused-vars */
-import { toast } from "react-toastify";
+import Link from "next/link";
 
 import DashboardWrapper from "components/admin/Wrapper";
-import useApi from "hooks/useApi";
 import { deletePost, getPosts } from "services/postService";
-import { useEffect } from "react";
 
 import LoadingPlaceHolder from "components/common/LoadingPlaceHolder";
-import { Link } from "react-router-dom";
 
-const ManagePosts = () => {
-  const { loading, data: posts, request, setData: setPosts } = useApi(getPosts);
+const ManagePosts = ({ posts }) => {
+  /*  const { loading, data: posts, request, setData: setPosts } = useApi(getPosts);
 
   useEffect(() => {
     request();
   }, []);
-
-  const handleDelete = async (id) => {
+ */
+  /* const handleDelete = async (id) => {
     const originalPosts = [...posts];
     setPosts(posts.filter((post) => post._id !== id));
 
@@ -32,7 +26,7 @@ const ManagePosts = () => {
       toast.error(`${res.data.message}`);
       return setPosts(originalPosts);
     }
-  };
+  }; */
 
   return (
     <DashboardWrapper topText={`Manage existing blog posts .`}>
@@ -70,7 +64,10 @@ const ManagePosts = () => {
                 <p className="pst-title">{post.title}</p>
 
                 <div className="buttons-contain">
-                  <Link to={`/posts/manage/${post.slug}`} className="btn edit">
+                  <Link
+                    href={`/posts/manage/${post.slug}`}
+                    className="btn edit"
+                  >
                     Edit <i className="fa-solid fa-trash"></i>
                   </Link>
 
@@ -90,6 +87,16 @@ const ManagePosts = () => {
       )}
     </DashboardWrapper>
   );
+};
+
+export const getStaticProps = async () => {
+  const res = await getPosts();
+
+  return {
+    props: {
+      posts: res.data.data,
+    },
+  };
 };
 
 export default ManagePosts;

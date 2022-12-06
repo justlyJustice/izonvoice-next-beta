@@ -1,7 +1,8 @@
 import { logo } from "/public/assets/images";
-import { Link, NavLink } from "react-router-dom";
+import Link from "next/link";
 
 import authService from "services/authService";
+import Image from "next/image";
 
 const Sidebar = ({ isOpen, handleClose }) => {
   const handleLogout = () => {
@@ -13,16 +14,16 @@ const Sidebar = ({ isOpen, handleClose }) => {
   return (
     <div className={isOpen ? "aside-bar slide" : "aside-bar"}>
       <div className="img-contain">
-        <Link to={`/dashboard`} onClick={handleClose}>
-          <img src={logo} alt="Side Logo" />
+        <Link href={`/dashboard`} onClick={handleClose}>
+          <Image src={logo} alt="Side Logo" height={200} width={200} />
         </Link>
 
         <i className="fa-solid fa-xmark" onClick={handleClose}></i>
       </div>
 
       <div className="menu-contain">
-        <NavLink
-          to={`/posts/create-post`}
+        <Link
+          href={`/posts/create-post`}
           className="menu-item"
           onClick={handleClose}
         >
@@ -31,27 +32,27 @@ const Sidebar = ({ isOpen, handleClose }) => {
             fa-circle-plus"
           ></i>{" "}
           Create Post
-        </NavLink>
+        </Link>
 
-        <NavLink
-          to={`/posts/manage-posts`}
+        <Link
+          href={`/posts/manage-posts`}
           className="menu-item"
           onClick={handleClose}
         >
           <i className="fa-solid fa-signs-post"></i> Manage all Posts
-        </NavLink>
+        </Link>
 
-        <NavLink
-          to={`/users/manage-users`}
+        <Link
+          href={`/users/manage-users`}
           className="menu-item"
           onClick={handleClose}
         >
           <i className="fa-sharp fa-solid fa-users"></i> Manage Users
-        </NavLink>
+        </Link>
       </div>
 
       <div className="sign-out-contain">
-        <Link to={`#`} onClick={handleLogout} className={`link`}>
+        <Link href={`#`} onClick={handleLogout} className={`link`}>
           Logout, Admin <i className="fa-solid fa-arrow-right-from-bracket"></i>
         </Link>
       </div>

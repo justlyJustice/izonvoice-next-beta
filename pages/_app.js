@@ -4,8 +4,12 @@ import NProgress from "nprogress";
 
 import { AuthProvider } from "context/AuthContext";
 
+// Import css files
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "nprogress/nprogress.css";
 import "../styles/globals.css";
+import "../styles/admin.css";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -17,7 +21,6 @@ function MyApp({ Component, pageProps }) {
     Router.events.on("routeChangeError", handleRouteDone);
 
     return () => {
-      // Make sure to remove the event handler on unmount!
       Router.events.off("routeChangeStart", handleRouteStart);
       Router.events.off("routeChangeComplete", handleRouteDone);
       Router.events.off("routeChangeError", handleRouteDone);

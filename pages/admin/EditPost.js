@@ -12,8 +12,8 @@ import ImageInput from "components/forms/ImageInput";
 import { toast } from "react-toastify";
 import useSubmit from "hooks/useSubmit";
 import useApi from "hooks/useApi";
-import { useParams } from "react-router-dom";
 import LoadingAnimation from "components/common/LoadingAnimation";
+import { useRouter } from "next/router";
 
 const validationSchema = Yup.object().shape({
   author: Yup.string().required().label("Author"),
@@ -24,7 +24,9 @@ const validationSchema = Yup.object().shape({
 });
 
 const EditPost = () => {
-  const { slug } = useParams();
+  const {
+    query: { slug },
+  } = useRouter();
   const formikRef = useRef();
   const {
     data: submitData,

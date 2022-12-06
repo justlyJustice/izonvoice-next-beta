@@ -1,22 +1,19 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/*  */
 import DashboardWrapper from "components/admin/Wrapper";
-import useApi from "hooks/useApi";
+
 import { getUsers } from "services/userService";
-import { useEffect } from "react";
 
 import LoadingPlaceHolder from "components/common/LoadingPlaceHolder";
 
-const ManageUsers = () => {
-  const { data: users, loading, request, setData: setUsers } = useApi(getUsers);
+const ManageUsers = ({ users }) => {
+  /*  const { data: users, loading, request, setData: setUsers } = useApi(getUsers);
 
   useEffect(() => {
     request();
-  }, []);
+  }, []); */
 
-  const handleDelete = (id) => {
+  /* const handleDelete = (id) => {
     setUsers(users.filter((user) => user._id !== id));
-  };
+  }; */
 
   return (
     <DashboardWrapper topText={`View/Manage users.`}>
@@ -70,6 +67,16 @@ const ManageUsers = () => {
       )}
     </DashboardWrapper>
   );
+};
+
+export const getStaticProps = async () => {
+  const res = await getUsers();
+
+  return {
+    props: {
+      users: res.data.data,
+    },
+  };
 };
 
 export default ManageUsers;

@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import { logo } from "/public/assets/images";
 import useAuth from "hooks/useAuth";
+import Image from "next/image";
 
 const Navbar = ({ fixed }) => {
-  const { query } = useRouter();
-  const location = query.pathname;
+  const { pathname } = useRouter();
+
   const [shown, setShown] = useState(false);
   const { user } = useAuth();
 
@@ -33,10 +33,12 @@ const Navbar = ({ fixed }) => {
     <>
       <nav className="navbar">
         <div className={!fixed ? "item nav-logo-contain" : "nav-logo-contain"}>
-          <img
+          <Image
             className="nav-logo"
             src={`/assets/images/Logo.png`}
             alt="Nav Logo"
+            width={`150`}
+            height={`150`}
           />
 
           {shown ? (
@@ -61,7 +63,7 @@ const Navbar = ({ fixed }) => {
           <Link
             onClick={() => setShown(false)}
             className={
-              location && location.pathname === "/home" ? "link active" : "link"
+              pathname && pathname === "/home" ? "link active" : "link"
             }
             href="/home"
           >
@@ -71,7 +73,7 @@ const Navbar = ({ fixed }) => {
           <Link
             onClick={() => setShown(false)}
             className={
-              location && location.pathname === "/category/agriculture"
+              pathname && pathname === "/category/agriculture"
                 ? "link active"
                 : "link"
             }
@@ -83,7 +85,7 @@ const Navbar = ({ fixed }) => {
           <Link
             onClick={() => setShown(false)}
             className={
-              location && location.pathname === "/category/culture"
+              pathname && pathname === "/category/culture"
                 ? "link active"
                 : "link"
             }
@@ -95,7 +97,7 @@ const Navbar = ({ fixed }) => {
           <Link
             onClick={() => setShown(false)}
             className={
-              location && location.pathname === "/category/finance"
+              pathname && pathname === "/category/finance"
                 ? "link active"
                 : "link"
             }
@@ -112,7 +114,7 @@ const Navbar = ({ fixed }) => {
           <Link
             onClick={() => setShown(false)}
             className={
-              location && location.pathname === "/category/sports"
+              pathname && pathname === "/category/sports"
                 ? "link active"
                 : "link"
             }
@@ -124,7 +126,7 @@ const Navbar = ({ fixed }) => {
           <Link
             onClick={() => setShown(false)}
             className={
-              location && location.pathname === "/category/social"
+              pathname && pathname === "/category/social"
                 ? "link active"
                 : "link"
             }
@@ -136,7 +138,7 @@ const Navbar = ({ fixed }) => {
           <Link
             onClick={() => setShown(false)}
             className={
-              location && location.pathname === "/category/politics"
+              pathname && pathname === "/category/politics"
                 ? "link active"
                 : "link"
             }

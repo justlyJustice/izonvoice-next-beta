@@ -1,5 +1,5 @@
 import { SubmitButton } from "components/forms";
-import { Link } from "react-router-dom";
+import Link from "next";
 import styled from "styled-components";
 
 export const Btn = styled(SubmitButton)`

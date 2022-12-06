@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import Image from "next/image";
 
 const CardContainer = styled(Link)`
   width: 240px;
@@ -78,15 +79,22 @@ const CardContainer = styled(Link)`
 const Card = ({ title, paraText, image, slug }) => {
   return (
     <CardContainer href={`/${slug}`}>
-      <div>
-        <img className="card-image" src={image} alt={image} />
+      <>
+        <Image
+          className="card-image"
+          src={image}
+          alt={image}
+          width={`240`}
+          height={`0`}
+          quality={100}
+        />
 
         <div>
           <h3 className="title">{title}</h3>
 
           <p className="para-text">{paraText}</p>
         </div>
-      </div>
+      </>
     </CardContainer>
   );
 };

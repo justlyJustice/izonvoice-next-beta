@@ -6,6 +6,7 @@ import Head from "components/common/Head";
 
 import { getPosts } from "services/postService";
 import useAuth from "hooks/useAuth";
+import Image from "next/image";
 
 const Main = ({ posts }) => {
   const { user } = useAuth();
@@ -13,30 +14,28 @@ const Main = ({ posts }) => {
   return (
     <>
       <Head
-        title="Izonvoice - Home"
+        title="Izonvoice"
         description="Get all latest news from around the Niger Delta"
         image={`assets/images/Logo.png`}
       />
 
       <div className="main-grid">
         <div className="left_div">
-          <img
+          <Image
             className="logo"
-            src={`assets/images/Logo.png`}
+            src={`/assets/images/Logo.png`}
+            width={`230`}
+            height={`230`}
             alt="Izon voice logo"
           />
         </div>
 
         <div className="content_div">
-          {/*      <div className="top-links-contain">
-            {user ? (
-              <Link
-                href="#"
-                className="link"
-                style={{ color: "rgba(234, 25, 25, 0.7)" }}
-              >
+          <div className="top-links-contain">
+            {/*  {user ? (
+              <p className="link" style={{ color: "rgba(234, 25, 25, 0.7)" }}>
                 <i className="fa-solid fa-user"></i> {user.name}
-              </Link>
+              </p>
             ) : (
               <>
                 <Link
@@ -57,8 +56,8 @@ const Main = ({ posts }) => {
                   Register
                 </Link>
               </>
-            )}
-          </div> */}
+            )} */}
+          </div>
 
           <div className="cards-contain">
             {posts &&

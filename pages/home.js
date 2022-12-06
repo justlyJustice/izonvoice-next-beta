@@ -1,34 +1,25 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import Image from "next/image";
 
 import PostCarousel from "components/PostCarousel";
 import Header from "components/common/Header";
 import { getPosts } from "services/postService";
-import useApi from "hooks/useApi";
-import LoadingAnimation from "components/common/LoadingAnimation";
+
 import Head from "components/common/Head";
 import { formateTime } from "utils/helpers";
-import { logo } from "/public/assets/images";
 
-const Posts = () => {
-  const { data: posts, loading, request: retrievePosts } = useApi(getPosts);
-
-  useEffect(() => {
-    retrievePosts();
-  }, []);
-
+const Posts = ({ posts }) => {
   return (
     <div>
       <section>
         <Head
           description="Izonvoice homepage"
           title="IzonVoice - Home"
-          image={logo}
+          image={`/assets/images/Logo.png`}
         />
 
-        <LoadingAnimation loading={loading} />
         <Header />
+
         <div className="container">
           <div className="carousel_contain">
             <PostCarousel posts={posts} />
@@ -45,13 +36,15 @@ const Posts = () => {
               <div className="section1">
                 {posts &&
                   posts.length > 0 &&
-                  posts.slice(10, posts.length).map((post, i) => (
-                    <Link to={`/${post.slug}`} key={i}>
+                  posts.slice(10, posts.length).map((post) => (
+                    <Link href={`/${post.slug}`} key={post._id}>
                       <div className="post-contain">
                         <div className="post-contain-image-contain">
-                          <img
+                          <Image
                             src={post.urlToImage || post.images[0]}
                             alt="Item pic"
+                            width={`100`}
+                            height={`100`}
                           />
                         </div>
 
@@ -62,6 +55,7 @@ const Posts = () => {
                                 className="fa-solid fa-badge"
                                 style={{ color: `white !imporant` }}
                               ></i>
+
                               <span className="first-span">
                                 {post.category.toUpperCase()}
                               </span>
@@ -99,7 +93,7 @@ const Posts = () => {
                                 }}
                               />
 
-                              <small>0</small>
+                              <small>{post.likes.length}</small>
                             </span>
                           </div>
                         </div>
@@ -139,6 +133,17 @@ const Posts = () => {
       </section>
     </div>
   );
+};
+
+export const getStaticProps = async () => {
+  const res = await getPosts();
+
+  return {
+    props: {
+      posts: res.data.data,
+    },
+    revalidate: 1,
+  };
 };
 
 export default Posts;

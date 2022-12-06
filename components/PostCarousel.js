@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
+import Image from "next/image";
+import Link from "next/link";
 import Slider from "react-slick";
 
 const PostCarousel = ({ posts }) => {
@@ -68,15 +69,18 @@ const PostCarousel = ({ posts }) => {
               .map((post, i) => (
                 <div key={i} className="blog-slider">
                   <div className="blog-image-contain">
-                    <img
+                    <Image
                       className="blog-image"
                       src={post.urlToImage || post.images[0]}
                       alt={post.urlToImage || post.images[0]}
+                      width={200}
+                      height={365}
+                      la
                     />
                   </div>
 
                   <div className="text-div">
-                    <Link to={`/${post.slug}`}>
+                    <Link href={`/${post.slug}`}>
                       <h2 className="carousel-text">{post.title}</h2>
 
                       <hr className="slide-rule" />

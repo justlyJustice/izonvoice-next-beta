@@ -1,5 +1,5 @@
 import { Comment } from "antd";
-/* import "antd/dist/antd.css"; */
+import "antd/dist/antd.css";
 
 import { formateTime } from "utils/helpers";
 import CustomIcon from "components/common/CustomIcon";

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import Sidebar from "./Sidebar";
 import TopTextContain from "./TopTextContain";
 
@@ -14,7 +15,7 @@ const DashboardWrapper = ({ children, topText }) => {
     setIsOpen(false);
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     const handleScrollVisibility = () => {
       document.documentElement.scrollTop > 400
         ? setShowTopBtn(true)
@@ -30,7 +31,7 @@ const DashboardWrapper = ({ children, topText }) => {
 
   useEffect(() => {
     sessionStorage.setItem("isOpen", isOpen);
-  }, [isOpen]);
+  }, [isOpen]); */
 
   return (
     <section className="dashboard">

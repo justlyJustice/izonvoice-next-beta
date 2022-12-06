@@ -17,7 +17,7 @@ const GoogleAuth = ({ text, state }) => {
 
   return (
     <GoogleLogin
-      clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+      clientId={process.env.GOOGLE_CLIENT_ID}
       onSuccess={onSuccess}
       cookiePolicy={"single_host_origin"}
       render={(renderProps) =>

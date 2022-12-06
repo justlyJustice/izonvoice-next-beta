@@ -1,19 +1,18 @@
-import { Navigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 import useAuth from "hooks/useAuth";
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useAuth();
+  const router = useRouter();
 
   return (
     <div>
       {user &&
       (user.email === `admin@izonvoice.ng` ||
-        user.email === `admin.local@izonvoice.ng`) ? (
-        children
-      ) : (
-        <Navigate to="/auth/admin" replace />
-      )}
+        user.email === `admin.local@izonvoice.ng`)
+        ? children
+        : router.push("/auth/admin")}
     </div>
   );
 };

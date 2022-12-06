@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const CategoryLinksSlide = () => {
+const CategoryButtonsSlide = () => {
   return (
     <div>
       <div className="button-groups">
@@ -40,4 +40,4 @@ const CategoryLinksSlide = () => {
   );
 };
 
-export default CategoryLinksSlide;
+export default CategoryButtonsSlide;
