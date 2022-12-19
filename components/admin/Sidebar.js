@@ -8,13 +8,13 @@ const Sidebar = ({ isOpen, handleClose }) => {
   const handleLogout = () => {
     authService.logoutAdmin();
 
-    window.location = `/auth/admin`;
+    //   window.location = `/auth/admin`;
   };
 
   return (
     <div className={isOpen ? "aside-bar slide" : "aside-bar"}>
       <div className="img-contain">
-        <Link href={`/dashboard`} onClick={handleClose}>
+        <Link href={`/admin/dashboard`} onClick={handleClose}>
           <Image src={logo} alt="Side Logo" height={200} width={200} />
         </Link>
 

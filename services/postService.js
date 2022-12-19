@@ -1,23 +1,24 @@
+import url from "config/url";
 import http from "./httpService";
 
 export const getPosts = async () => {
-  return await http.get("posts");
+  return await http.get(url + "posts");
 };
 
 export const getPost = async (id) => {
-  return await http.get(`posts/${id}`);
+  return await http.get(`${url}posts/${id}`);
 };
 
 export const getPostsCategory = async (category) => {
-  return await http.get(`posts/?category=${category}`);
+  return await http.get(`${url}posts/?category=${category}`);
 };
 
 export const likePost = async (postId) => {
-  return await http.post(`posts/${postId}/likes/add-like`);
+  return await http.post(`${url}posts/${postId}/likes/add-like`);
 };
 
 export const unlikePost = async (postId) => {
-  return await http.post(`posts/${postId}/likes/remove-like`);
+  return await http.post(`${url}posts/${postId}/likes/remove-like`);
 };
 
 export const uploadBlogPost = (values) => {
@@ -34,7 +35,7 @@ export const uploadBlogPost = (values) => {
     formData.append("image", images[i]);
   }
 
-  return http.post("posts", formData, {
+  return http.post(url + "posts", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -42,5 +43,5 @@ export const uploadBlogPost = (values) => {
 };
 
 export const deletePost = (id) => {
-  return http.delete(`/posts/${id}`);
+  return http.delete(`${url}/posts/${id}`);
 };

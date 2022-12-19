@@ -945,18 +945,11 @@
   color: white !important;
   cursor: pointer;
   font-weight: 600;
-  font-size: 14px !important;
+  font-size: 18px !important;
   padding: 14px 14px;
   width: 100%;
   transition: transform, ease-in-out all 0.3s;
   position: relative;
-}
-
-.form__contain .submit-btn:hover {
-  background: rgba(188, 18, 18, 0.7);
-  box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  transform: translateY(-3px);
 }
 
 .error {
@@ -1443,15 +1436,16 @@
   }
 
   .auth-contain .left-contain {
-    display: none !important;
+    /*  display: none !important; */
   }
 
   .auth-contain .right-contain {
-    background-image: linear-gradient(
+    background-color: white !important;
+    /*   background-image: linear-gradient(
         rgba(66, 232, 39, 0.7),
         rgba(234, 25, 25, 0.7)
       ),
-      url("/public/assets/images/background.jpeg");
+      url("/public/assets/images/background.jpeg"); */
     height: 100%;
     padding: 30px;
   }

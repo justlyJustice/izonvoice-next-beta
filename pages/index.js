@@ -9,8 +9,6 @@ import useAuth from "hooks/useAuth";
 import Image from "next/image";
 
 const Main = ({ posts }) => {
-  const { user } = useAuth();
-
   return (
     <>
       <Head
@@ -90,6 +88,8 @@ const Main = ({ posts }) => {
   );
 };
 
+export default Main;
+
 export const getStaticProps = async () => {
   const res = await getPosts(`?limit=3`);
 
@@ -101,5 +101,3 @@ export const getStaticProps = async () => {
     },
   };
 };
-
-export default Main;

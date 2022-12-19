@@ -4,6 +4,7 @@ import JwtDecode from "jwt-decode";
 
 import storage from "utils/storage";
 import url from "config/url";
+import Cookies from "js-cookie";
 
 const tokenKey = "token";
 const adminTokenKey = "adminTokenKey";
@@ -19,7 +20,7 @@ export const getAdminJwt = () => {
 http.setJwt(getJwt());
 
 export const login = async (userObj) => {
-  const response = await http.post(`${url}/auth/login`, {
+  const response = await http.post(`${url}auth/login`, {
     email: userObj.email,
     password: userObj.password,
   });
@@ -27,11 +28,13 @@ export const login = async (userObj) => {
   switch (response.data.email) {
     case "admin@izonvoice.ng" || "admin@izonvoice.local.ng":
       storage.setItem(adminTokenKey, response.data.token);
+      Cookies.set(adminTokenKey, response.data.token);
       break;
 
     default:
       const jwt = response.data.token;
       storage.setItem(tokenKey, jwt);
+      Cookies.set(tokenKey, jwt);
       break;
   }
 
@@ -68,14 +71,16 @@ export const loginWithJwt = (jwt) => {
 
 export const logout = () => {
   storage.removeItem(tokenKey);
+  Cookies.remove(tokenKey);
 };
 
 export const logoutAdmin = () => {
   storage.removeItem(adminTokenKey);
+  Cookies.remove(adminTokenKey);
 };
 
 export const googleAuth = async (tokenId) => {
-  const res = await http.post("/google-auth", {
+  const res = await http.post(url + "/google-auth", {
     token: tokenId,
   });
 

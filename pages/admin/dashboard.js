@@ -1,10 +1,17 @@
 import Link from "next/link";
 
 import DashboardWrapper from "components/admin/Wrapper";
+import Head from "components/common/Head";
 
 const AdminDashboard = () => {
   return (
     <DashboardWrapper>
+      <Head
+        title={`Admin Dashboard - Manage Posts`}
+        description={`Manage posts, delete, upload new posts`}
+        image={`/assets/images/Logo.png`}
+      />
+
       <div className="cards">
         <Link className="card" href={`/posts/create-post`}>
           <div className="overlay"></div>

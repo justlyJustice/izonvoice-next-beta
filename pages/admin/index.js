@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars */
+import Image from "next/image";
+
 import * as Yup from "yup";
-import { logo } from "/public/assets/images";
 import { Form, Input, SubmitButton } from "components/forms";
 
 import authService from "services/authService";
@@ -28,14 +28,20 @@ const AdminLogin = () => {
   return (
     <>
       <Head
-        title="Izonvoice - Admin Route"
-        description="Manage blog posts"
-        image={logo}
+        title="Admin Login - IzonVoice"
+        description="Login to acccess, manage and add posts!"
+        image={"/public/assets/Logo.png"}
       />
 
       <div className="auth-contain">
         <div className="left-contain">
-          <img src={logo} alt="Logo" />
+          <Image
+            src={"/assets/images/Logo.png"}
+            alt="Logo"
+            className="logo"
+            width={220}
+            height={220}
+          />
         </div>
 
         <div className="right-contain">
@@ -75,7 +81,9 @@ const AdminLogin = () => {
                     Checking... <i className="fa-solid fa-spinner fa-spin"></i>
                   </>
                 ) : (
-                  <>Login</>
+                  <>
+                    Login <i className="fa-solid fa-send"></i>
+                  </>
                 )}
               </SubmitButton>
             </Form>

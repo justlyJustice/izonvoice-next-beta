@@ -9,7 +9,7 @@
       rgba(255, 255, 255, 0.8),
       rgba(237, 237, 237, 0.75)
     ),
-    url("/public/assets/images/blog.jpg");
+    url("/assets/images/blog.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;

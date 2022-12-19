@@ -1,5 +1,8 @@
+import Cookies from "js-cookie";
 import authService from "./authService";
 import http from "./httpService";
+
+const tokenKey = "token";
 
 export async function register(user) {
   const res = await http.post(`/auth/signup`, {
@@ -10,6 +13,7 @@ export async function register(user) {
 
   if (res.ok) {
     authService.loginWithJwt(res.data.token);
+    Cookies.set(tokenKey, res.data.token);
   }
 
   return res;
