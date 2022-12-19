@@ -34,7 +34,7 @@ const Login = () => {
   } = useSubmit(auth.login);
 
   const loginUser = (values, { resetForm }) => {
-    login(values, "", `Login sucessful!`, resetForm);
+    login(values, `/home`, ``, resetForm);
   };
 
   /*  if (user) return push("/home"); */

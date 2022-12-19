@@ -1,9 +1,10 @@
 import { createContext, useState } from "react";
+
 import auth from "services/authService";
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(auth.currentUser);
 
   return (
@@ -12,3 +13,5 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+export default AuthProvider;

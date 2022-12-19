@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Router from "next/router";
 import NProgress from "nprogress";
 
-import { AuthProvider } from "context/AuthContext";
+import AuthProvider from "context/AuthContext";
 
 // Import css files
 import "slick-carousel/slick/slick.css";

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -5,6 +6,7 @@ import logger from "utils/logger";
 import { getStatus } from "utils/statusCodes";
 
 const useSubmit = (apiFunc) => {
+  const { push } = useRouter();
   const [data, setData] = useState({});
   const [success, setSuccess] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -12,13 +14,13 @@ const useSubmit = (apiFunc) => {
   const [error, setError] = useState(false);
 
   const submit = async (
-    urlParam,
+    values,
     navigateTo,
     successMessage = `Success!`,
     resetForm
   ) => {
     setSubmitting(true);
-    const res = await apiFunc(urlParam);
+    const res = await apiFunc(values);
     setSubmitting(false);
 
     if (res.ok) {
@@ -32,7 +34,7 @@ const useSubmit = (apiFunc) => {
 
       if (navigateTo) {
         setTimeout(() => {
-          window.location.href = navigateTo;
+          push(navigateTo);
         }, 4000);
       }
 

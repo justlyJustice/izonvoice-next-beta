@@ -43,5 +43,5 @@ export const uploadBlogPost = (values) => {
 };
 
 export const deletePost = (id) => {
-  return http.delete(`${url}/posts/${id}`);
+  return http.delete(`${url}posts/${id}`);
 };

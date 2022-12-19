@@ -1,11 +1,9 @@
 import { useState } from "react";
 import Linkify from "linkify-react";
-import ReactModal from "react-modal";
 
 import Header from "components/common/Header";
 import Head from "components/common/Head";
 import CommentSection from "components/comment/CommentSection";
-import PostShare from "components/common/PostShare";
 
 import {
   formateTime,
@@ -26,6 +24,9 @@ const Post = ({ post }) => {
 
   const description = splitDescriptionToFour(post);
   const desc = splitDescToFour(post);
+
+  const length = 700;
+  const trimmedDescription = post.description.substring(0, length);
 
   return (
     <section>
@@ -70,8 +71,8 @@ const Post = ({ post }) => {
 
       <>
         <Head
-          title={`${post.title}`}
-          description={post.description}
+          title={`${post.title} - IzonVoice`}
+          description={trimmedDescription}
           image={post.images[0] || post.urlToImage}
         />
 
@@ -81,6 +82,7 @@ const Post = ({ post }) => {
               <Image
                 src={post.urlToImage || post.images[0]}
                 alt="Post img"
+                className="img"
                 /* fill */
                 width={`100`}
                 height={`100`}
